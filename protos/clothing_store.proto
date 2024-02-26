@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package ClothingStore;
+
+service ClothingStore {
+    rpc GetArticleByBarcode(ArticleSearchRequest) returns (ArticleSearchResponse) {}
+}
+
+message ArticleSearchRequest{
+    string barcode = 1;
+}
+
+message Offer {
+    float discount_percent = 1;
+    float max_discoutn = 2;
+    float min_original_price = 3;
+}
+
+message ArticleSearchResponse {
+    string item_type = 1;
+    string size = 2;
+    string colour = 3;
+    string image_url = 4;
+    int32 stock = 5;
+    float price = 6;
+    repeated Offer offers = 7;
+}
